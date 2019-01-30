@@ -28,8 +28,8 @@
     <meta name="msapplication-square150x150logo" content="/favicomatic/mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="/favicomatic/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/favicomatic/mstile-310x310.png" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
 
     <title>GogoTV</title>
 </head>
