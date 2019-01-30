@@ -8,11 +8,42 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
     <title>GogoTV</title>
 </head>
 <body>
 
     <div class="container py-5">
+
+        <form class="form" action="/" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" name="episode" class="form-control" id="anime-episode-go-input" placeholder="https://gogoanime.io">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="anime-episode-go-submit">Go</button>
+                </div>
+            </div>
+        </form>
+
         <div class="list-group d-hide mb-3" id="anime-episodes"></div>
 
         <div id="anime-player" class="d-hide mb-3">
@@ -42,6 +73,20 @@
         var base_url = '/';
         var api_base_url = 'https://gogoanime.io';
         var url = api_base_url + '/<?= $_GET['episode'] ?>';
+
+        function anime_episode_go_input()
+        {
+            $( '#anime-episode-go-input' ).on('blur, keyup', function() {
+                var input = $(this);
+                var value = input.val();
+                if ( value.includes( api_base_url ) ) {
+                    var new_value = value.replace( api_base_url, '' );
+                    new_value = new_value.replace( '/', '' );
+                    input.val( new_value );
+                }
+            });
+        }
+        anime_episode_go_input();
 
         function anime_episode_server( source )
         {
@@ -114,10 +159,10 @@
             var $source = $( source );
             var l = $source.find( '.anime_video_body_episodes_l a' );
             list['prev']['url'] = l.length ? l.attr('href') : null;
-            list['prev']['title'] = l.length ? $.trim( l.text().replace('<<', '') ) : null;
+            list['prev']['title'] = l.length ? $.trim( l.text().replace('<<', '') ).replace('/', '') : null;
             var r = $source.find( '.anime_video_body_episodes_r a' );
             list['next']['url'] = r.length ? r.attr('href') : null;
-            list['next']['title'] = r.length ? $.trim( r.text().replace('>>', '') ) : null;
+            list['next']['title'] = r.length ? $.trim( r.text().replace('>>', '') ).replace('/', '') : null;
             return list;
         }
 
