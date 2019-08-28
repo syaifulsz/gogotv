@@ -5,7 +5,7 @@ function freshCache()
     return !empty( $_GET['cache'] ) && ( $_GET['cache'] === 'refresh' );
 }
 
-function getSource(string $url)
+function getSource( string $url )
 {
     $cacheKey = md5( $url );
     $cache = __DIR__ . "/cache/{$cacheKey}";
