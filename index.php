@@ -40,7 +40,8 @@
         <div class="list-group">
             <a href="/anime.php?episode=/kimetsu-no-yaiba-episode-1" class="list-group-item list-group-item-action">
                 Demon Slayer
-            </a>ref="/anime.php?episode=/boruto-naruto-next-generations-episode-1" class="list-group-item list-group-item-action">
+            </a>
+            <a href="/anime.php?episode=/boruto-naruto-next-generations-episode-1" class="list-group-item list-group-item-action">
                 Boruto
             </a>
             <a href="/anime.php?episode=/one-piece-episode-1" class="list-group-item list-group-item-action">
